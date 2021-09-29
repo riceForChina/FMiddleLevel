@@ -1,0 +1,6 @@
+framework module KCHomePageModule {
+  umbrella header "KCHomePageModule-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_FMiddleLevelDemo {
+  umbrella header "Pods-FMiddleLevelDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

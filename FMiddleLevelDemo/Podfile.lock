@@ -1,0 +1,22 @@
+PODS:
+  - FMiddleLevel (0.0.1)
+  - KCHomePageModule (0.0.1):
+    - FMiddleLevel
+
+DEPENDENCIES:
+  - FMiddleLevel (from `../`)
+  - KCHomePageModule (from `../OherModel/KCHomePageModule`)
+
+EXTERNAL SOURCES:
+  FMiddleLevel:
+    :path: "../"
+  KCHomePageModule:
+    :path: "../OherModel/KCHomePageModule"
+
+SPEC CHECKSUMS:
+  FMiddleLevel: 87a9bcd31b40945afbdb7c1eddf7b08a0c50518d
+  KCHomePageModule: d2d00e40e7dc39eb49ba8ba1bbfb46c2ab78b097
+
+PODFILE CHECKSUM: f6eb1e838bd910fcfe8fa196451526c675d53adf
+
+COCOAPODS: 1.10.1
