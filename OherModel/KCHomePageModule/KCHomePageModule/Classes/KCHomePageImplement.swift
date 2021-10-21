@@ -9,11 +9,16 @@
 import UIKit
 import FMiddleLevel
 
+class KCHomeVc: UIViewController {
+    
+}
 public class KCHomePageImplement: NSObject, KCHomePageProtocol,FRouterProtocol {
     public func registerRouter() {
         print("registerRouter")
         FRouter.manager.register(name: "goHome") { (params) in
             print("goHome ---- \(params)")
+            let vc = KCHomeVc()
+            ModuleManager.topViewController?.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -22,4 +27,9 @@ public class KCHomePageImplement: NSObject, KCHomePageProtocol,FRouterProtocol {
     }
 }
 
+extension FRouter {
+    @objc func newRegister() {
+        print("home - text")
+    }
+}
 

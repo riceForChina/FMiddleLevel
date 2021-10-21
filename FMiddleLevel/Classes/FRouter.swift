@@ -7,8 +7,8 @@
 
 import UIKit
 
-public class FRouter: NSObject {
-    public static let manager:FRouter = FRouter()
+@objc public class FRouter: NSObject {
+    @objc public static let manager:FRouter = FRouter()
     fileprivate var moduleDic:[String:RouterBlock] = [:]
     
     public typealias RouterBlock = (([String:Any]) -> ())
@@ -66,5 +66,11 @@ public extension String {
             return nil
         }
         return dict
+    }
+}
+
+extension FRouter {
+    @objc func newRegister() {
+        print("home - text")
     }
 }

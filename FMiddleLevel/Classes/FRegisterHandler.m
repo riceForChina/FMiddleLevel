@@ -13,6 +13,7 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 #include <mach-o/ldsyms.h>
+#import <FMiddleLevel/FMiddleLevel-Swift.h>
 
 #define FServiceSectName "FServices"
 
@@ -90,6 +91,30 @@ NSArray<NSString *>* BHReadConfiguration(char *sectionName,const struct mach_hea
     [FRegisterHandler shareInstance].moduleList = nil;
     _dyld_register_func_for_add_image(dyld_callback);
     block([FRegisterHandler shareInstance].moduleList);
+    //新版本注册
+    [self runTests];
+    //
+    
+}
+
+typedef void(*text_method_t)(id, SEL);
+
++ (void)runTests
+{
+    unsigned int count;
+    
+    Method *methods = class_copyMethodList([FRouter class], &count);
+    for (int i = 0; i < count; i++)
+    {
+        Method method = methods[i];
+        SEL selector = method_getName(method);
+        NSString *name = NSStringFromSelector(selector);
+        
+        if ([name hasPrefix:@"newRegister"]) {
+            text_method_t textImp = method_getImplementation(method);
+            (*textImp)(FRouter.manager, selector);
+        }
+    }
 }
 
 @end
